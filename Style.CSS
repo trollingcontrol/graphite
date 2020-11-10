@@ -1,0 +1,147 @@
+﻿body {
+	font-family: Segoe UI;
+}
+input {
+	font-family: Segoe UI;
+}
+.bordered {
+	border: 4px solid;
+}
+.func_name {
+	font-weight: bold;
+}
+.func_def {
+	margin-left: 20px;
+}
+.changer {
+	width: 259.2px; /* 15% */
+	font-size: 15pt;
+	margin-left: 4px;
+}
+.cust_button {
+	border: 1px solid;
+	text-align: center;
+}
+.panel_elem {
+	margin-top: 10px;
+}
+.string {
+	font-size: 15pt;
+}
+.closing {
+	text-align: right;
+}
+.user_calc_input {
+	float: right;
+	width: 300px;
+}
+.user_color_input {
+	width: 96px;
+	font-size: 13pt;
+	text-align: center;
+}
+.popup_window {
+	display: none;
+	z-index: 999;
+	padding: 10px;
+}
+.defcur {
+	cursor: default;
+}
+.user_range {
+	width: 123px;
+	font-size: 13pt;
+	text-align: center;
+}
+.calc_margined {
+	margin-left: 126px;
+}
+.color_unit {
+	width: 105.9px;
+}
+#layout {
+	margin: auto;
+	width: 1728px; /* base width */
+	height: auto;
+}
+#header {
+	height: 121.5px;
+}
+#title {
+	width: 1728px; /* 100% */
+	text-align: center;
+}
+#title_string {
+	color: white;
+	font-size: 20pt;
+}
+#version {
+	text-align: center;
+}
+#version_string {
+	font-size: 15pt;
+}
+#scale_changing {
+	display: flex;
+	justify-content: center;
+}
+#sublayout {
+	display: flex;
+	width: 1728px; /* 100% */
+	height: 1362.4px; /* 80% width -20px [2 * padding 10px] */
+}
+#panel {
+	flex-grow: 1;
+	padding: 10px;
+	max-width: 345.6px; /* 20% */
+}
+#main_panel {
+	padding: 10px;
+	padding-top: 0;
+}
+#user_func {
+	font-size: 15pt;
+	width: 315px; /* custom */
+}
+#func_list {
+	margin-top: 10px;
+}
+#graph_list {
+	margin-top: 15px;
+}
+#canvas_area {
+	flex-grow: 4;
+	padding: 10px;
+}
+#calculator {
+	position: fixed;
+	width: 432px; /* 25% */
+	height: 259.2px; /* 15% */
+	top: 25%;
+	left: 50%;
+	margin-left: -216px;
+	margin-top: -129.6px;
+}
+#help {
+	position: fixed;
+	width: 864px; /* 50% */
+	height: 691.2px; /* 40% */
+	top: 50%;
+	left: 50%;
+	margin-left: -432px;
+	margin-top: -345.6px;
+}
+#scrolled {
+	height: 607.2px;
+	overflow-y: scroll;
+}
+#graph_type {
+	cursor: pointer;
+}
+#calc_calculate {
+	width: 150px;
+}
+#color_panel {
+	display: flex;
+	justify-content: center;
+}

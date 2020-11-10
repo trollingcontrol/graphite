@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<!--
+	Graphite 5.0
+	03.03.2017
+	TrollingCont
+-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Graphite 5.0</title>
+		<link rel="stylesheet" href="Style.CSS">
+		<link rel="stylesheet" href="Colors_dark.CSS">
+		<script defer src="ProgramParams_dark.JS"></script>
+		<script defer src="Main.JS"></script>
+		<script defer src="GraphicalSystem.JS"></script>
+		<script defer src="Parser.JS"></script>
+	</head>
+	<body>
+		<div id="layout">
+			<div id="header">
+				<div id="title">
+					<span id="title_string">Graphite</span>
+				</div>
+				<div id="version">
+					<span id="version_string">Версия 5.0</span>
+				</div>
+				<div id="scale_changing">
+					<div class="changer cust_button defcur" id="decrease_scale">-</div>
+					<div class="changer cust_button defcur" id="increase_scale">+</div>
+				</div>
+			</div>
+			<div id="sublayout">
+				<div id="panel">
+					<div id="main_panel" class="bordered">
+						<div id="calculate_value" class="cust_button panel_elem defcur">Рассчитать значение функции</div>
+						<div id="draw_graph" class="cust_button panel_elem defcur">Построить график функции</div>
+						<div id="draw_derivative" class="cust_button panel_elem defcur">Построить график производной</div>
+						<div class="panel_elem">
+							<span class="string">Функция</span>
+						</div>
+						<div class="panel_elem">
+							<input id="user_func" type="text">
+						</div>
+						<div id="color_panel" class="panel_elem">
+							<div class="color_unit">
+								<span class="string">Красный</span>
+								<input id="user_red" class="user_color_input" type="text">
+							</div>
+							<div class="color_unit">
+								<span class="string">Зелёный</span>
+								<input id="user_green" class="user_color_input" type="text">
+							</div>
+							<div class="color_unit">
+								<span class="string">Синий</span>
+								<input id="user_blue" class="user_color_input" type="text">
+							</div>
+						</div>
+						<div class="panel_elem">
+							<input id="user_random_color" type="checkbox" checked="true">
+							<span id="user_random_color_string" class="string defcur">Случайный цвет графика</span>
+						</div>
+						<div class="panel_elem">
+							<input id="user_radians" type="checkbox" checked="true">
+							<span id="user_radians_string" class="string defcur">Радианная мера угла</span>
+						</div>
+						<div class="panel_elem">
+							<span class="string">Вид графика: </span>
+							<span id="graph_type" class="string">y(x)</span>
+						</div>
+						<div class="panel_elem">
+							<span class="string">Диапазон рисования графика:</span>
+							<br>
+							<span class="string">От</span>
+							<input id="user_left" class="user_range">
+							<span class="string">до</span>
+							<input id="user_right" class="user_range">
+						</div>
+						<div class="panel_elem">
+							<input id="user_autorange" type="checkbox" checked="true">
+							<span id="user_autorange_string" class="string defcur">Строить во всю ширину поля</span>
+						</div>
+						<div id="clear_area" class="cust_button panel_elem defcur">Очистить поле</div>
+						<div id="open_help" class="cust_button panel_elem defcur">Справка</div>
+					</div>
+					<div id="graph_list">
+						<span class="string">Список графиков:</span>
+					</div>
+					<div id="func_list">
+					</div>
+				</div>
+				<div id="canvas_area">
+					<canvas id="drawing_area" width="1362" height="1362">Этот браузер не поддерживет HTML5-элемент canvas</canvas>
+				</div>
+			</div>
+			<div id="calculator" class="bordered popup_window">
+				<div class="closing">
+					<span id="close_calc" class="string closer defcur">✕</span>
+				</div>
+				<div class="panel_elem">
+					<span class="string">Выражение</span>
+					<input id="user_exp" class="user_calc_input string" type="text">
+				</div>
+				<div class="panel_elem">
+					<span class="string">Значение X</span>
+					<input id="user_var" class="user_calc_input string" type="text">
+				</div>
+				<div class="panel_elem">
+					<span class="string">Ответ</span>
+					<input id="calc_answer" class="user_calc_input string" type="text" readonly>
+				</div>
+				<div class="panel_elem calc_margined">
+					<input id="user_calc_radians" type="checkbox">
+					<span class="string">Радианная мера угла</span>
+				</div>
+				<div class="panel_elem calc_margined">
+					<div id="calc_calculate" class="cust_button defcur">Рассчитать</div>
+				</div>
+			</div>
+			<div id="help" class="bordered popup_window">
+				<div>
+					<div class="closing">
+						<span id="close_help" class="string closer defcur">✕</span>
+					</div>
+					<div>
+						<span class="string">
+						Graphite, версия 5.0 (03.03.2017)
+						<br>
+						Справка
+						</span>
+					</div>
+				</div>
+				<div id="scrolled">
+					<br>
+					<p>
+						Поддерживаются базовые арифметические операции (сложение, вычитание, умножение, деление, возведение в степень), число Эйлера (латинская "e"), число Пи (Pi), запись чисел в научной форме (AeB, что равно A*10^B).
+					</p>
+					<p>
+						Поддерживаются функции, их аргумент необходимо писать в круглых скобках.
+					</p>
+					<p>
+						Список поддерживаемых функций (X - любое допустимое математическое выражение):
+					</p>
+					<ul>
+						<li>
+							<span class="func_name">sin(X).</span>
+							<br>
+							<span class="func_def">Синус угла X</span>
+						</li>
+						<li>
+							<span class="func_name">cos(X).</span>
+							<br>
+							<span class="func_def">Косинус угла X</span>
+						</li>
+						<li>
+							<span class="func_name">tg(X), tan(X).</span>
+							<br>
+							<span class="func_def">Тангенс угла X</span>
+						</li>
+						<li>
+							<span class="func_name">ctg(X), cot(X).</span>
+							<br>
+							<span class="func_def">Котангенс угла X</span>
+						</li>
+						<li>
+							<span class="func_name">sec(X).</span>
+							<br>
+							<span class="func_def">Секанс угла X</span>
+						</li>
+						<li>
+							<span class="func_name">cosec(X), csc(X).</span>
+							<br>
+							<span class="func_def">Косеканс угла X</span>
+						</li>
+						<li>
+							<span class="func_name">arcsin(X), asin(X).</span>
+							<br>
+							<span class="func_def">Арксинус числа X</span>
+						</li>
+						<li>
+							<span class="func_name">arccos(X), acos(X).</span>
+							<br>
+							<span class="func_def">Арккосинус числа X</span>
+						</li>
+						<li>
+							<span class="func_name">arctg(X), atan(X).</span>
+							<br>
+							<span class="func_def">Арктангенс числа X</span>
+						</li>
+						<li>
+							<span class="func_name">arcctg(X), acot(X).</span>
+							<br>
+							<span class="func_def">Арккотангенс числа X</span>
+						</li>
+						<li>
+							<span class="func_name">arcsec(X), asec(X).</span>
+							<br>
+							<span class="func_def">Арксеканс числа X</span>
+						</li>
+						<li>
+							<span class="func_name">arccosec(X), acsc(X).</span>
+							<br>
+							<span class="func_def">Арккосеканс числа X</span>
+						</li>
+						<li>
+							<span class="func_name">sqrt(X)</span>
+							<br>
+							<span class="func_def">Квадратный корень числа X</span>
+						</li>
+						<li>
+							<span class="func_name">abs(X)</span>
+							<br>
+							<span class="func_def">Модуль числа X</span>
+						</li>
+						<li>
+							<span class="func_name">ln(X)</span>
+							<br>
+							<span class="func_def">Натуральный логарифм числа X</span>
+						</li>
+						<li>
+							<span class="func_name">exp(X)</span>
+							<br>
+							<span class="func_def">Экспонента числа X</span>
+						</li>
+						<li>
+							<span class="func_name">rtX(Y), rootX(Y)</span>
+							<br>
+							<span class="func_def">Корень числа Y по основанию X</span>
+						</li>
+						<li>
+							<span class="func_name">rand(X)</span>
+							<br>
+							<span class="func_def">Случайное дробное число от нуля до X</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

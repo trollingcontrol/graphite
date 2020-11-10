@@ -1,0 +1,36 @@
+﻿body {
+	background: #202020;
+	color: #D0D0D0;
+}
+input {
+	color: #D0D0D0;
+	background-color: #202020;
+}
+.bordered {
+	border-color: #D0D0D0;
+}
+.cust_button {
+	border-color: #D0D0D0;
+}
+.cust_button:hover {
+	background: #7F7F7F;
+}
+.cust_button:active {
+	background: #A0A0A0;
+	color: white;
+}
+.closer:hover {
+	color: #A0A0A0;
+}
+.closer:active {
+	color: #000000;
+}
+.popup_window {
+	background: rgba(32, 32, 32, 0.7);
+}
+#title {
+	background: #202020;
+}
+#graph_type:hover {
+	color: #7F7F7F;
+}
